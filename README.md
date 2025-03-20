@@ -41,7 +41,7 @@ python manage.py migrate
 2. 执行以下命令运行开发服务器：
 
 ```bash
-python manage.py runserver
+python3.9 manage.py runserver
 ```
 
 3. 在浏览器中访问 http://127.0.0.1:8000
