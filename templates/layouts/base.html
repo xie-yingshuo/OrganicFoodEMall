@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Title{% endblock %}</title>
+    {% block extra_head %}{% endblock %}
+    <!-- 引入Google字体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- 核心样式文件 -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'css/simple-line-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/pe-icon-7-stroke.css' %}">
+    <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/nav.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+    <link rel="stylesheet" href="{% static 'css/organicfood.css' %}">
+    <link rel="stylesheet" href="{% static 'css/product.css' %}">
+    <link rel="stylesheet" href="{% static 'css/cart.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login-register.css' %}">
+    <!-- 现代风格主题样式 -->
+    <link rel="stylesheet" href="{% static 'css/modern-style.css' %}">
+</head>
+
+<body>
+    {% block content %}{% endblock %}
+    
+    <!-- 添加页脚 -->
+    <footer class="footer-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="footer-widget">
+                        <h4 class="footer-title">Organic Food Mall</h4>
+                        <div class="footer-about">
+                            <p>We are committed to providing consumers with high-quality, healthy organic food, so that every customer can enjoy a natural and safe food experience.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="footer-widget">
+                        <h4 class="footer-title">Quick Links</h4>
+                        <div class="footer-link">
+                            <ul>
+                                <li><a href="/">Home</a></li>
+                                <li><a href="/shopping/product_list/1/">All Products</a></li>
+                                <li><a href="/contact/">Contact Us</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-widget">
+                        <h4 class="footer-title">Contact Us</h4>
+                        <div class="footer-contact">
+                            <ul>
+                                <li><i class="ti-location-pin"></i> 977 xxx Road, xxx District, Glasgow</li>
+                                <li><i class="ti-mobile"></i> Tel: 012 345 678</li>
+                                <li><i class="ti-email"></i> organicfood@example.com</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="copyright text-center">
+                        <p>&copy; 2025 Organic Food Mall All Rights Reserved</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <div class="modal fade" id="message" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-message">
+            <div class="modal-content">
+                <div class="modal-body">
+                    {% for message in messages%}
+                    <div id="message-area"><h5>{{message}}</h5></div>
+                    {% endfor %}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="form-btn" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'js/modernizr-2.8.3.min.js' %}"></script>
+    <script src="{% static 'js/jquery-1.12.0.min.js' %}"></script>
+    <script src="{% static 'js/popper.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/plugins.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/organicfood.js' %}"></script>
+    {% block extra_scripts %}{% endblock %}
+</body>
+</html>

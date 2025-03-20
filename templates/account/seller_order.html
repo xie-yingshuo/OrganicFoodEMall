@@ -1,0 +1,206 @@
+{% extends 'Layouts/Base.html' %}
+
+{% block title %}Sales Record{% endblock %}
+{% block content %}
+{% include 'Layouts/nav.html' %}
+{% load static %}
+<div class="product-area pt-80 pb-80">
+    <div class="container">
+        <div class="admin-card">
+            <div class="admin-header">
+                <h3 class="admin-title">
+                    <i class="ti-shopping-cart-full mr-2"></i>Sales Record
+                </h3>
+            </div>
+            <div class="admin-body">
+                <div class="table-responsive">
+                    <table class="table product-table">
+                        <thead>
+                            <tr>
+                                <th>Order Number</th>
+                                <th>Actual Payment</th>
+                                <th>Status</th>
+                                <th>Creation Time</th>
+                                <th>Completion Time</th>
+                                <th>Operation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for order in order_list %}
+                                <tr>
+                                    <td class="order-id">{{order.order_id}}</td>
+                                    <td class="order-price">¥{{order.total_price}}</td>
+                                    <td>
+                                        <span class="status-badge status-{{order.status}}">{{order.status}}</span>
+                                    </td>
+                                    <td>{{order.created_at|date:"Y-m-d H:i"}}</td>
+                                    <td>
+                                        {% if order.status == "Completed" %}
+                                            {{order.completed_at|date:"Y-m-d H:i"}}
+                                        {% else %}
+                                            <span class="text-muted">--</span>
+                                        {% endif %}
+                                    </td>
+                                    <td class="action-buttons">
+                                        {% if order.status == "Waitdelivery" %}
+                                            <a href="/shopping/deliver/{{order.id}}/" class="btn-action btn-primary" title="Shipping">
+                                                <i class="ti-truck mr-1"></i>Shipping
+                                            </a>
+                                        {% endif %}
+                                        {% if order.status == "Refunding" %}
+                                            <a href="/shopping/agree_refund/{{order.id}}/" class="btn-action btn-warning" title="Agree to Refund">
+                                                <i class="ti-wallet mr-1"></i>Agree to Refund
+                                            </a>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .product-area {
+        background-color: #f9f9f9;
+    }
+    
+    .admin-card {
+        background: white;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        overflow: hidden;
+    }
+    
+    .admin-header {
+        padding: 20px 25px;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+        background-color: white;
+    }
+    
+    .admin-title {
+        font-size: 24px;
+        margin: 0;
+        color: var(--text-color);
+        font-weight: 600;
+    }
+    
+    .admin-body {
+        padding: 0;
+    }
+    
+    .product-table {
+        margin-bottom: 0;
+    }
+    
+    .product-table thead th {
+        background-color: #f5f5f5;
+        padding: 15px;
+        font-weight: 600;
+        border-bottom: 2px solid #eee;
+        color: #555;
+        font-size: 14px;
+    }
+    
+    .product-table tbody td {
+        padding: 15px;
+        vertical-align: middle;
+        border-bottom: 1px solid #f0f0f0;
+    }
+    
+    .order-id {
+        font-family: monospace;
+        font-weight: 500;
+    }
+    
+    .order-price {
+        font-weight: 600;
+        color: var(--primary-color);
+    }
+    
+    .status-badge {
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 500;
+    }
+    
+    .status-badge.status-待发货 {
+        background-color: #e3f2fd;
+        color: #1976d2;
+    }
+    
+    .status-badge.status-已发货 {
+        background-color: #e8f5e9;
+        color: #388e3c;
+    }
+    
+    .status-badge.status-已完成 {
+        background-color: #e8f5e9;
+        color: #388e3c;
+    }
+    
+    .status-badge.status-退款中 {
+        background-color: #fff8e1;
+        color: #ff8f00;
+    }
+    
+    .status-badge.status-已退款 {
+        background-color: #ffebee;
+        color: #d32f2f;
+    }
+    
+    .action-buttons {
+        white-space: nowrap;
+    }
+    
+    .btn-action {
+        display: inline-block;
+        padding: 6px 12px;
+        margin-right: 5px;
+        border-radius: 4px;
+        font-size: 13px;
+        text-decoration: none;
+        transition: var(--transition);
+    }
+    
+    .btn-action.btn-primary {
+        background-color: #e3f2fd;
+        color: #1976d2;
+    }
+    
+    .btn-action.btn-primary:hover {
+        background-color: #bbdefb;
+        text-decoration: none;
+    }
+    
+    .btn-action.btn-warning {
+        background-color: #fff8e1;
+        color: #ff8f00;
+    }
+    
+    .btn-action.btn-warning:hover {
+        background-color: #ffecb3;
+        text-decoration: none;
+    }
+    
+    .text-muted {
+        color: #999;
+    }
+    
+    @media (max-width: 767px) {
+        .admin-title {
+            font-size: 20px;
+        }
+        
+        .action-buttons .btn-action {
+            padding: 4px 8px;
+            font-size: 12px;
+        }
+    }
+</style>
+{% endblock %}

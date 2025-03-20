@@ -1,0 +1,253 @@
+{% extends 'layouts/base.html' %}
+{% block title %}Contact Us{% endblock %}
+{% block content %}
+{% include 'layouts/nav.html' %}
+<div class="contact-area pt-80 pb-80">
+    <div class="container">
+        <div class="section-title text-center mb-5">
+            <h2>Contact Us</h2>
+            <p class="mt-3">If you have any questions or suggestions, please feel free to contact us</p>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-12">
+                <div class="contact-card animate__animated animate__fadeInUp">
+                    <div class="contact-icon">
+                        <i class="ti-location-pin"></i>
+                    </div>
+                    <div class="contact-content">
+                        <h4>Our Address</h4>
+                        <p>977, xxx Road, xxx District, Glasgow</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12">
+                <div class="contact-card animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
+                    <div class="contact-icon">
+                        <i class="ti-mobile"></i>
+                    </div>
+                    <div class="contact-content">
+                        <h4>Contact Us</h4>
+                        <p>Tel: 012 345 678</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12 mx-auto">
+                <div class="contact-card animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
+                    <div class="contact-icon">
+                        <i class="ti-email"></i>
+                    </div>
+                    <div class="contact-content">
+                        <h4>Write to Us</h4>
+                        <p><a href="mailto:organicfood@example.com">organicfood@example.com</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row mt-5">
+            <div class="col-lg-8 mx-auto">
+                <div class="contact-form-card animate__animated animate__fadeInUp" style="animation-delay: 0.6s;">
+                    <h3 class="mb-4">Leave Us a Message</h3>
+                    <form action="#" method="post">
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div class="form-group">
+                                    <label for="name">Your Name</label>
+                                    <input type="text" id="name" name="name" class="form-control" placeholder="Please enter your Name">
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="form-group">
+                                    <label for="email">E-Mail</label>
+                                    <input type="email" id="email" name="email" class="form-control" placeholder="Please enter your E-Mail">
+                                </div>
+                            </div>
+                            <div class="col-12 mb-4">
+                                <div class="form-group">
+                                    <label for="subject">Topic</label>
+                                    <input type="text" id="subject" name="subject" class="form-control" placeholder="Please enter the message subject">
+                                </div>
+                            </div>
+                            <div class="col-12 mb-4">
+                                <div class="form-group">
+                                    <label for="message">Message Content</label>
+                                    <textarea id="message" name="message" class="form-control" rows="5" placeholder="Please enter your message content"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn-submit">
+                                    <i class="ti-comment-alt mr-2"></i>Commit Message Content
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+<style>
+    .contact-area {
+        background-color: #f9f9f9;
+    }
+    
+    .section-title h2 {
+        font-size: 32px;
+        font-weight: 700;
+        color: var(--text-color);
+        position: relative;
+        display: inline-block;
+        padding-bottom: 15px;
+    }
+    
+    .section-title h2:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background-color: var(--primary-color);
+    }
+    
+    .contact-card {
+        background: white;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        padding: 30px 20px;
+        text-align: center;
+        height: 100%;
+        transition: var(--transition);
+    }
+    
+    .contact-card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .contact-icon {
+        width: 70px;
+        height: 70px;
+        line-height: 70px;
+        text-align: center;
+        background-color: var(--primary-color);
+        color: white;
+        border-radius: 50%;
+        margin: 0 auto 20px;
+        font-size: 24px;
+    }
+    
+    .contact-content h4 {
+        font-size: 20px;
+        margin-bottom: 15px;
+        font-weight: 600;
+        color: var(--text-color);
+    }
+    
+    .contact-content p {
+        margin-bottom: 5px;
+        color: #666;
+    }
+    
+    .contact-content a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: var(--transition);
+    }
+    
+    .contact-content a:hover {
+        color: var(--primary-dark);
+    }
+    
+    .contact-form-card {
+        background: white;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        padding: 30px;
+    }
+    
+    .contact-form-card h3 {
+        font-size: 24px;
+        font-weight: 600;
+        color: var(--text-color);
+        position: relative;
+        padding-bottom: 15px;
+        margin-bottom: 20px;
+    }
+    
+    .contact-form-card h3:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 3px;
+        background-color: var(--primary-color);
+    }
+    
+    .form-group label {
+        font-weight: 500;
+        color: #555;
+        margin-bottom: 8px;
+    }
+    
+    .form-control {
+        height: 45px;
+        border-radius: var(--border-radius-sm);
+        border: 1px solid #e0e0e0;
+        padding: 0 15px;
+        transition: var(--transition);
+    }
+    
+    .form-control:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 0.2rem rgba(var(--primary-rgb), 0.15);
+    }
+    
+    textarea.form-control {
+        height: auto;
+        padding: 12px 15px;
+    }
+    
+    .btn-submit {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: var(--border-radius-sm);
+        padding: 12px 30px;
+        font-weight: 500;
+        transition: var(--transition);
+        cursor: pointer;
+    }
+    
+    .btn-submit:hover {
+        background-color: var(--primary-dark);
+    }
+    
+    .map-container {
+        background: white;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        padding: 10px;
+        overflow: hidden;
+    }
+    
+    .map-wrapper {
+        border-radius: var(--border-radius-sm);
+        overflow: hidden;
+    }
+    
+    .animate__animated {
+        animation-duration: 0.8s;
+    }
+    
+    @media (max-width: 767px) {
+        .contact-card {
+            margin-bottom: 20px;
+        }
+    }
+</style>
+{% endblock %}

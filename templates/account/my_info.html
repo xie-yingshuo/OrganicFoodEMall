@@ -1,0 +1,131 @@
+{% extends 'Layouts/Base.html' %}
+{% block title %}My Information{% endblock %}
+{% block content %}
+{% include 'Layouts/nav.html' %}
+{% load static %}
+        <!-- my account start -->
+        <div class="my-account-area pt-50">
+            <div class="container">
+                <div class="row">
+                    <div class="ml-auto mr-auto col-lg-9">
+                        <div class="checkout-wrapper">
+                            <div id="faq" class="panel-group">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h5 class="panel-title"><span>1</span> <a data-toggle="collapse" data-parent="#faq" href="#my-account-1">Edit personal information</a></h5>
+                                    </div>
+                                    <div id="my-account-1" class="panel-collapse collapse show">
+                                        <div class="panel-body">
+                                            <form action="/account/update_user_info/" method="post">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="user_id" value="{{user.id}}">
+                                                <div class="billing-information-wrapper">
+                                                    <div class="account-info-wrapper">
+                                                        <h4>Personal Data</h4>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12">
+                                                            <div class="billing-info">
+                                                                <label>Nickname</label>
+                                                                <input type="text" name="name" value="{{ user.userinfo_set.first.name}}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-12 col-md-12">
+                                                            <div class="billing-info">
+                                                                <label>E-mail</label>
+                                                                <input type="email" name="email" value="{{ user.email}}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-12 col-md-12">
+                                                            <div class="billing-info">
+                                                                <label>Telphone</label>
+                                                                <input type="text" name="phone_num" value="{{ user.userinfo_set.first.phone_num}}">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="billing-back-btn">
+                                                        <div class="billing-back">
+                                                            <a href="#"></a>
+                                                        </div>
+                                                        <div class="billing-btn">
+                                                            <button class="form-btn" type="submit">Update</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h5 class="panel-title"><span>2</span> <a data-toggle="collapse" data-parent="#faq" href="#my-account-2">Update Password</a></h5>
+                                    </div>
+                                    <div id="my-account-2" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <form action="/account/change_password/" method="post">
+                                                {% csrf_token %}
+                                                <div class="billing-information-wrapper">
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12">
+                                                            <div class="billing-info">
+                                                                <label>New Password</label>
+                                                                <input type="password" name="password">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-12 col-md-12">
+                                                            <div class="billing-info">
+                                                                <label>Confirm Password</label>
+                                                                <input type="password" name="confirm_password">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="billing-back-btn">
+                                                        <div class="billing-back">
+                                                            <a href="#"></a>
+                                                        </div>
+                                                        <div class="billing-btn">
+                                                            <button class="form-btn" type="submit">Save</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h5 class="panel-title"><span>3</span> <a data-toggle="collapse" data-parent="#faq" href="#my-account-3">Edit Address</a></h5>
+                                    </div>
+                                    <div id="my-account-3" class="panel-collapse collapse">
+                                        <form action="/account/save_address/" method="post">
+                                            {% csrf_token %}
+                                            <div class="panel-body">
+                                                <div class="billing-information-wrapper">
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12">
+                                                            <div class="billing-info">
+                                                                <label>Shipping Address</label>
+                                                                <textarea name="address">{{ user.userinfo_set.first.address}}</textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="billing-back-btn">
+                                                        <div class="billing-back">
+                                                            <a href="#"></a>
+                                                        </div>
+                                                        <div class="billing-btn">
+                                                            <button class="form-btn" type="submit">Update</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

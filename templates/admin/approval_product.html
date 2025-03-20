@@ -1,0 +1,48 @@
+{% extends 'layouts/base.html' %}
+{% block title %}Product Review{% endblock %}
+{% block content %}
+{% include 'layouts/nav.html' %}
+{% load static %}
+<div class="product-area pt-50">
+<div class="container">
+        <h3 class="page-title">Product Review</h3>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                <form action="#">
+                    <div class="table-content table-responsive">
+                        <table class="table table-striped table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Pricture</th>
+                                    <th>Product Name</th>
+                                    <th>Category</th>
+                                    <th>Subcategories</th>
+                                    <th>Unit Price</th>
+                                    <th>Operation</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for product in product_list %}
+                                    <tr>
+                                        <td class="product-thumbnail">
+                                            <a href="#"><img style="height:160px;width: 120px" src="/{{product.image}}" alt="">
+                                            </a>
+                                        </td>
+                                        <td><a href="/shopping/product_detail/{{product.id}}/" class="process-operate">{{product.name}}</a></td>
+                                        <td>{{product.sub_category.category.name}}</td>
+                                        <td>{{product.sub_category.name}}</td>
+                                        <td>${{product.price}}</td>
+                                        <td>
+                                            <a href="{% url 'approval_product' product.id %}" class="process-operate">Approved</a>
+                                        </td>
+                                    </tr>
+                                {% endfor%}
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

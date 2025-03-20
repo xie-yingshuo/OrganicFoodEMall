@@ -1,0 +1,61 @@
+{% extends 'Layouts/Base.html' %}
+
+{% block title %}My Order{% endblock %}
+{% block content %}
+ <!-- shopping-cart-area start -->
+{% include 'Layouts/nav.html' %}
+{% load static %}
+<div class="cart-main-area pt-115 pb-120 gray-bg">
+    <div class="container">
+        <h3 class="page-title">My Order</h3>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                <form action="#">
+                    <div class="table-content table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Order Number</th>
+                                    <th>Picture</th>
+                                    <th>Product Name</th>
+                                    <th>Actual Payment</th>
+                                    <th>Quantity</th>
+                                    <th>Status</th>
+                                    <th>Creation Time</th>
+                                    <th>Completion Time</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>3496827998681488107</td>
+                                    <td class="product-thumbnail">
+                                        <a href="#"><img style="height:160px;width: 120px" src="{% static 'picture/home-1.jpg' %}" alt=""></a>
+                                    </td>
+                                    <td class="product-name"><a href="#">有机生菜</a></td>
+                                    <td class="product-price-cart"><span class="amount">$110.00</span></td>
+                                    <td class="product-quantity">2</td>
+                                    <td class="product-name">待发货</td>
+                                    <td class="product-name">2024-10-17</td>
+                                    <td class="product-name">2024-10-19</td>
+                                </tr>
+                                <tr>
+                                    <td>3496827998681685145</td>
+                                    <td class="product-thumbnail">
+                                        <a href="#"><img style="height:160px;width: 120px" src="{% static 'picture/home-3.jpg' %}" alt=""></a>
+                                    </td>
+                                    <td class="product-name"><a href="#">草莓</a></td>
+                                    <td class="product-price-cart"><span class="amount">$150.00</span></td>
+                                    <td class="product-quantity">1</td>
+                                    <td class="product-name">已发货</td>
+                                    <td class="product-name">2024-10-19</td>
+                                    <td class="product-name">2024-10-20</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

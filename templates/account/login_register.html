@@ -1,0 +1,207 @@
+{% extends 'Layouts/Base.html' %}
+{% block title %}RegisterLogin{% endblock %}
+{% block content %}
+{% include 'layouts/nav.html' %}
+<div class="login-register-area pt-80 pb-80">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-10">
+                <div class="login-register-wrapper">
+                    <div class="login-register-tab-list nav nav-tabs mb-4" id="auth-tabs">
+                        <a class="nav-item nav-link {% if type == 'register' %}{% else %}active{% endif %}" data-toggle="tab" href="#lg1">
+                            <h4>Sign in</h4>
+                        </a>
+                        <a class="nav-item nav-link {% if type == 'register' %}active{% else %}{% endif %}" data-toggle="tab" href="#lg2">
+                            <h4>Sign up</h4>
+                        </a>
+                    </div>
+                    <div class="tab-content">
+                        <div id="lg1" class="tab-pane fade {% if type == 'register' %}{% else %}show active{% endif %}">
+                            <div class="login-form-container">
+                                <div class="login-register-form">
+                                    <form action="/account/login/" method="post">
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                            <label for="username">Username</label>
+                                            <input type="text" name="username" id="username" class="form-control" placeholder="Please Enter Password">
+                                            {% for error in errors.username %}
+                                                <div class="invalid-feedback d-block">{{ error }}</div>
+                                            {% endfor %}
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="password">Password</label>
+                                            <input type="password" name="password" id="password" class="form-control" placeholder="Please Enter Password">
+                                            {% for error in errors.password %}
+                                                <div class="invalid-feedback d-block">{{ error }}</div>
+                                            {% endfor %}
+                                        </div>
+                                        <div class="form-group mb-4">
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="remember-me">
+                                                <label class="custom-control-label" for="remember-me">remember me</label>
+                                            </div>
+                                        </div>
+                                        <div class="button-box">
+                                            <button type="submit" class="btn-submit">Log In</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="lg2" class="tab-pane fade {% if type == 'register' %}show active{% else %}{% endif %}">
+                            <div class="login-form-container">
+                                <div class="login-register-form">
+                                    <form action="/account/register/" method="post">
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                            <label for="reg-username">username</label>
+                                            <input type="text" name="username" id="reg-username" class="form-control" placeholder="Pleas Enter Username">
+                                            {% for error in errors.username %}
+                                                <div class="invalid-feedback d-block">{{ error }}</div>
+                                            {% endfor %}
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="reg-password">Password</label>
+                                            <input type="password" name="password" id="reg-password" class="form-control" placeholder="Please Enter Password">
+                                            {% for error in errors.password %}
+                                                <div class="invalid-feedback d-block">{{ error }}</div>
+                                            {% endfor %}
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="confirm-password">Comfirm Password</label>
+                                            <input type="password" name="confirm_password" id="confirm-password" class="form-control" placeholder="Please Enter Password Again">
+                                            {% for error in errors.confirm_password %}
+                                                <div class="invalid-feedback d-block">{{ error }}</div>
+                                            {% endfor %}
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email">E-mail</label>
+                                            <input type="email" name="email" id="email" class="form-control" placeholder="Please Enter E-mail">
+                                            {% for error in errors.email %}
+                                                <div class="invalid-feedback d-block">{{ error }}</div>
+                                            {% endfor %}
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="role">User Type</label>
+                                            <select name="role" id="role" class="form-control">
+                                                {% for role in role_list %}
+                                                <option value={{role.id}}>{{role.name}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                        <div class="button-box mt-4">
+                                            <button type="submit" class="btn-submit">Register</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .login-register-area {
+        background-color: #f9f9f9;
+    }
+    
+    .login-register-wrapper {
+        background: white;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        padding: 35px;
+    }
+    
+    .login-register-tab-list {
+        display: flex;
+        justify-content: center;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .login-register-tab-list a {
+        padding: 15px 25px;
+        position: relative;
+        color: #777;
+        transition: var(--transition);
+    }
+    
+    .login-register-tab-list a.active {
+        color: var(--primary-color);
+    }
+    
+    .login-register-tab-list a.active:after {
+        content: '';
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: var(--primary-color);
+    }
+    
+    .login-register-tab-list h4 {
+        font-size: 18px;
+        font-weight: 500;
+        margin: 0;
+    }
+    
+    .form-group label {
+        color: #555;
+        font-weight: 500;
+        margin-bottom: 8px;
+    }
+    
+    .form-control {
+        height: 46px;
+        border-radius: var(--border-radius-sm);
+        border: 1px solid #e0e0e0;
+        padding: 0 15px;
+        transition: var(--transition);
+    }
+    
+    .form-control:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 0.2rem rgba(var(--primary-rgb), 0.15);
+    }
+    
+    .invalid-feedback {
+        color: #dc3545;
+        font-size: 13px;
+        margin-top: 5px;
+    }
+    
+    .btn-submit {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: var(--border-radius-sm);
+        padding: 12px 30px;
+        font-weight: 500;
+        width: 100%;
+        transition: var(--transition);
+        cursor: pointer;
+    }
+    
+    .btn-submit:hover {
+        background-color: var(--primary-dark);
+    }
+    
+    .custom-control-input:checked ~ .custom-control-label::before {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+    }
+    
+    @media (max-width: 767px) {
+        .login-register-wrapper {
+            padding: 25px 15px;
+        }
+        
+        .login-register-tab-list a {
+            padding: 10px 15px;
+        }
+    }
+</style>
+{% endblock %}

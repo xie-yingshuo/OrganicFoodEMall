@@ -1,0 +1,152 @@
+{% extends 'layouts/base.html' %}
+{% block title %}Organic Food Mall - Healthy life starts here{% endblock %}
+{% block content %}
+{% include 'layouts/nav.html' %}
+
+<!-- 添加首页横幅 -->
+<div class="container mt-4">
+    <div class="banner-area">
+        <img src="/static/img/banner.jpg" alt="Organic Food" class="banner-img" onerror="this.src='https://images.unsplash.com/photo-1550989460-0adf9ea622e2?q=80&w=1700'; this.style.objectFit='cover';">
+        <div class="banner-content">
+            <h1 class="animate__animated animate__fadeInDown">Fresh healthy organic food</h1>
+            <p class="animate__animated animate__fadeInUp animate__delay-1s">We select high-quality organic ingredients from all over the country to bring you and your family a healthy and delicious life experience.</p>
+            <a href="/shopping/product_list/1/" class="btn-shop animate__animated animate__fadeInUp animate__delay-2s">Shop Now</a>
+        </div>
+    </div>
+</div>
+
+<!-- 热门分类 -->
+<div class="container mt-5">
+    <div class="section-title">
+        <h2>Popular Categories</h2>
+        <p>A variety of organic food categories are selected for you</p>
+    </div>
+    <div class="row">
+        <div class="col-md-3 col-6 mb-4">
+            <div class="category-card">
+                <a href="/shopping/product_list/1/" class="text-decoration-none">
+                    <div class="card h-100">
+                        <img class="card-img-top" src="/static/pictures/生菜-1.jpg" alt="Organic Vegetables" 
+                        onerror="this.src='https://images.unsplash.com/photo-1598170845053-a150ee5c5733?q=80&w=400&h=300&fit=crop';" style="height: 250px; object-fit: cover;">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Organic Vegetables</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-3 col-6 mb-4">
+            <div class="category-card">
+                <a href="/shopping/product_list/2/" class="text-decoration-none">
+                    <div class="card h-100">
+                        <img class="card-img-top" src="/static/pictures/206d2835-c019-4dd8-822b-dd71fa44516d.jpg" alt="Fresh Fruit" 
+                        onerror="this.src='https://images.unsplash.com/photo-1519996529931-28324d5a630e?q=80&w=400&h=300&fit=crop';" style="height: 250px; object-fit: cover;">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Fresh Fruit</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-3 col-6 mb-4">
+            <div class="category-card">
+                <a href="/shopping/product_list/3/" class="text-decoration-none">
+                    <div class="card h-100">
+                        <img class="card-img-top" src="/static/pictures/牛肉-1.jpg" alt="Fresh Meat" 
+                        onerror="this.src='https://images.unsplash.com/photo-1604928141064-207cea6f571f?q=80&w=400&h=300&fit=crop';" style="height: 250px; object-fit: cover;">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Fresh Meat</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-3 col-6 mb-4">
+            <div class="category-card">
+                <a href="/shopping/product_list/4/" class="text-decoration-none">
+                    <div class="card h-100">
+                        <img class="card-img-top" src="/static/pictures/玉米-1.jpg" alt="Cereals" 
+                        onerror="this.src='https://images.unsplash.com/photo-1576826154302-0d3b8952a159?q=80&w=400&h=300&fit=crop';" style="height: 250px; object-fit: cover;">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Cereals</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 推荐食品 -->
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12">
+            <h3 class="food-title">Recommended Food</h3>
+        </div>
+    </div>
+</div>
+{% include 'product_list.html' %}
+
+<!-- 为什么选择我们 -->
+<div class="container mt-5 mb-5">
+    <div class="section-title">
+        <h2>Why Choose Us</h2>
+        <p>Safe, healthy and delicious</p>
+    </div>
+    <div class="row">
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="feature-box text-center p-4">
+                <div class="feature-icon mb-3">
+                    <i class="ti-shield" style="font-size: 2.5rem; color: var(--primary-color);"></i>
+                </div>
+                <h4>100% Certified Organic</h4>
+                <p>Our products have passed strict organic certification to ensure that they are free of pesticides and additives</p>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="feature-box text-center p-4">
+                <div class="feature-icon mb-3">
+                    <i class="ti-truck" style="font-size: 2.5rem; color: var(--primary-color);"></i>
+                </div>
+                <h4>Nationwide delivery</h4>
+                <p>A nationwide distribution network ensures that products are delivered fresh</p>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="feature-box text-center p-4">
+                <div class="feature-icon mb-3">
+                    <i class="ti-reload" style="font-size: 2.5rem; color: var(--primary-color);"></i>
+                </div>
+                <h4>Ensure freshness</h4>
+                <p>Picked directly from the farm to ensure product freshness and best quality</p>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="feature-box text-center p-4">
+                <div class="feature-icon mb-3">
+                    <i class="ti-medall" style="font-size: 2.5rem; color: var(--primary-color);"></i>
+                </div>
+                <h4>Quality Assurance</h4>
+                <p>Strictly control every link to provide you with the best quality products</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    // 为确保可执行性添加placeholder动画效果
+    $(document).ready(function(){
+        // 动画元素
+        $('.animate__animated').each(function(){
+            $(this).addClass('animate__animated');
+        });
+        
+        // 处理图片错误
+        $('img').on('error', function(){
+            // 已经处理onerror属性
+        });
+    });
+</script>
+{% endblock %}

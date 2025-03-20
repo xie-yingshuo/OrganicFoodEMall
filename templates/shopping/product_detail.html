@@ -1,0 +1,103 @@
+{% extends 'Layouts/Base.html' %}
+{% block title %}Product Details{% endblock %}
+{% block content %}
+{% include 'Layouts/nav.html' %}
+{% load static %}
+<div class="shop-area pt-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="product-details-img">
+                    <img src="/{{product.image}}">
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="product-details-content">
+                    <form action="" method="post" id="settle_form">
+                        {% csrf_token %}
+                        <h2 class="product_detail_title">{{product.name}}</h2>
+                        <input type="hidden" id="product_id" name="product_id" value="{{product.id}}">
+                        <div class="sku"></div>
+                        <div class="product-price product_info">
+                            <label>Price:</label>
+                            <p class="detail_price">￥{{product.price}}</p>
+                        </div>
+                        <div class="product_info">
+                            <label>Sales Status:</label>
+                            {% if product.status == 'OnSale' %}
+                                <p style="color:#93c241">{{product.status}}</p>
+                            {% else %}
+                                <p>{{product.status}}</p>
+                            {% endif%}
+                        </div>
+                        <div class="product_info">
+                            <label>Product Introduction：</label>
+                            <p>{{product.short_description}}</p>
+                        </div>
+                        <div class="product_info">
+                            <label>Origin Information:</label>
+                            <p>{{product.origin}}</p>
+                        </div>
+                        <div class="product_info">
+                            <label>Supplier:</label>
+                            <p>{{product.supplier}}</p>
+                        </div>
+                        <div class="quality-wrapper mt-30 product-quantity">
+                            <label>Purchase quantity:</label>
+                            <div class="cart-plus-minus">
+                                <input class="cart-plus-minus-box" type="text" name="product_quantity_{{product.id}}" value="2">
+                            </div>
+                        </div>
+
+                    </form>
+                    <div class="product-list-action">
+                        <div class="product-list-action-left mt-20">
+                            <a id="add_to_cart" class="addtocart-btn" href="#" title="Add to the cart">
+                                <i class="ion-bag"></i>
+                                Add to the cart
+                            </a>
+                        </div>
+                        <div class="product-list-action-left mt-20">
+                            <a id="buy_product" class="addtocart-btn" href="#" title="Buy it now">
+                                <i class="ion-bag"></i>
+                                Buy it now
+                            </a>
+                        </div>
+                        <div class="product-list-action-left mt-20" style="font-size: 20px;">
+                            <a id="add_to_favorites" href="#" title="Faourite" class="favorite">
+                                <i class="ti-heart"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="description-review-area pb-120">
+    <div class="container">
+        <div class="description-review-wrapper gray-bg pt-40">
+            <div class="description-review-topbar nav text-center">
+                <a class="active" data-toggle="tab" href="#des-details1">Product Details</a>
+                <a data-toggle="tab" href="#des-details2">More Information</a>
+            </div>
+            <div class="tab-content description-review-bottom">
+                <div id="des-details1" class="tab-pane active">
+                    <div class="product-description-wrapper">
+                        <p>
+                            {{product.description}}
+                        </p>
+                    </div>
+                </div>
+                <div id="des-details2" class="tab-pane">
+                    <div class="product-anotherinfo-wrapper">
+                            {{product.other_description}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% include "shopping/settle.html" %}
+{% endblock %}

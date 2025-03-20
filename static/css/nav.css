@@ -1,0 +1,150 @@
+/* 导航栏样式 */
+/* 主菜单样式 */
+.header-area {
+	left: 0;
+	top: 0;
+	transition: all 0.7s ease 0s;
+	width: 100%;
+	z-index: 99;
+}
+.main-menu li {
+	display: inline-block;
+	list-style: outside none none;
+	padding: 0 16px;
+	position: relative;
+}
+/* 主菜单文本样式 */
+.main-menu li a {
+	color: #383838;
+	display: inline-block;
+	font-family: "Montserrat", sans-serif;
+	font-weight: 300;
+	line-height: 120px;
+	text-transform: uppercase;
+}
+/* 鼠标滑过主菜单文本样式 */
+.main-menu li:hover>a {
+	color: #f6ab4b;
+}
+/* 食品菜单样式 */
+.main-menu ul li.mega-menu-position {
+	position: static;
+}
+/* 子菜单样式 */
+.main-menu nav>ul>li>ul.submenu {
+	background: #fff none repeat scroll 0 0;
+	box-shadow: 0 0 7px 0.5px rgba(0, 0, 0, 0.15);
+	display: block;
+	left: 0;
+	opacity: 0;
+	padding: 20px 20px 24px;
+	position: absolute;
+	text-align: left;
+	top: 55%;
+	transition: all 0.3s ease 0s;
+	visibility: hidden;
+	width: 190px;
+	z-index: 999;
+}
+.main-menu ul li ul>li {
+	display: block;
+	padding: 0;
+}
+.main-menu ul li ul>li a {
+	color: #555;
+	display: block;
+	line-height: 31px;
+	text-transform: capitalize;
+}
+.main-menu nav>ul>li>ul.mega-menu {
+	background: #fff none repeat scroll 0 0;
+	border-top: 1px solid #dcdcdc;
+	box-shadow: 0 0 7px 0.5px rgba(0, 0, 0, 0.15);
+	display: block;
+	left: 0;
+	opacity: 0;
+	padding: 30px 30px 34px 0;
+	position: absolute;
+	text-align: left;
+	top: 120%;
+	transition: all 0.3s ease 0s;
+	visibility: hidden;
+	width: 100%;
+	z-index: 9999;
+}
+.main-menu nav>ul>li:hover>ul.submenu,
+.main-menu nav>ul>li:hover>ul.mega-menu {
+	opacity: 1;
+	top: 60%;
+	visibility: visible;
+}
+.main-menu nav>ul>li>ul.mega-menu>li {
+	display: inline-block;
+	float: left;
+	padding-left: 30px;
+	width: 25%;
+}
+.main-menu ul li ul>li.mega-menu-title {
+	color: #333333;
+	font-size: 14px;
+	font-weight: bold;
+	margin: 0 0 10px;
+	text-transform: uppercase;
+}
+.mega-menu img {
+	width: 100%;
+}
+
+/* 我的信息样式 */
+.my-info{
+	background: #fff none repeat scroll 0 0;
+	box-shadow: 0 0 7px 0.5px rgba(0, 0, 0, 0.15);
+	display: block;
+	opacity: 0;
+	padding: 20px 20px 24px;
+	position: absolute;
+	text-align: left;
+	top: 50%;
+	transition: all 0.3s ease 0s;
+	visibility: hidden;
+	width: 190px;
+	z-index: 999;
+}
+.my-info>li{
+    display: block;
+    padding: 0;
+    list-style: outside none none;
+    position: relative;
+}
+.my-info>li>a,b{
+    color: #555;
+    display: block;
+    line-height: 31px;
+    text-transform: capitalize;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 300;
+}
+.my-info>li>a:hover{
+    color: #f6ab4b
+}
+.has-login:hover .my-info {
+    opacity: 1 !important;
+    top: 55%;
+    visibility: visible ;
+}
+.logout-button{
+    color: #f6ab4b !important;
+}
+
+
+.section-title>h4 {
+	font-family: "Kalam", cursive;
+	font-size: 60px;
+	font-weight: bold;
+	line-height: 60px;
+	margin: 0;
+}
+
+.header-area{
+    -webkit-box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}

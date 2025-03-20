@@ -1,0 +1,241 @@
+{% load static %}
+<header class="header-area transparent-bar sticky-top">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-auto">
+                <div class="logo-area">
+                    <a href="/" class="text-decoration-none">
+                        <div class="brand-logo d-flex align-items-center">
+                            <i class="ti-crown mr-2" style="font-size: 24px; color: var(--primary-color);"></i>
+                            <h3 class="mb-0" style="color: var(--primary-color); font-weight: 700;">Organic Food</h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col">
+                <div class="main-menu d-flex justify-content-center">
+                    <nav>
+                        <ul class="horizontal-menu d-flex align-items-center m-0">
+                            <li><a href="/">Home</a></li>
+                            <li class="mega-menu-position"><a href="#">Product Category</a>
+                                <ul class="mega-menu">
+                                    {% for category in category_list %}
+                                        <li>
+                                            <ul>
+                                                <li class="mega-menu-title">{{category.name}}</li>
+                                                {% for sub_category in category.subcategory_set.all %}
+                                                    <li><a href="/shopping/product_list/{{sub_category.id}}/">{{sub_category.name}}</a></li>
+                                                {% endfor %}
+                                            </ul>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                            <li><a href="/shopping/cart/">Cart</a></li>
+                            {% if user.is_staff %}
+                            <li><a href="#">Administrator</a>
+                                <ul class="submenu">
+                                    <li><a href="/admin/food_category/">Food Category Management</a></li>
+                                    <li><a href="/admin/user_category/">User Management</a></li>
+                                    <li><a href="/admin/show_approve_product/">Food Audit</a></li>
+                                    <li><a href="/admin/manage_product/">Food Management</a></li>
+                                </ul>
+                            </li>
+                            {% endif %}
+                            {% if user.is_staff or user.userinfo_set.first.role.name == '商家'%}
+                                <li><a href="#">Seller</a>
+                                    <ul class="submenu">
+                                        <li><a href="/account/my_product/">My Product</a></li>
+                                        <li><a href="/shopping/add_product/">Release Product</a></li>
+                                        <li><a href="/account/seller_order/">Sales Record</a></li>
+                                    </ul>
+                                </li>
+                            {% endif %}
+                            <li><a href="/contact/">Contact Us</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="col-auto">
+                <div class="header-actions d-flex align-items-center">
+                    <div class="header-search same-style">
+                        <button class="search-toggle">
+                            <i class="icon-magnifier s-open"></i>
+                            <i class="pe-7s-close s-close"></i>
+                        </button>
+                        <div class="search-content">
+                            <form action="/shopping/search/" method="post">
+                                {% csrf_token %}
+                                <input type="text" placeholder="Search Product..." name="search_product">
+                                <button type="submit">
+                                    <i class="icon-magnifier"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    {% if not user.is_authenticated %}
+                        <div class="header-login same-style ml-3">
+                            <a href="/account/index/" class="btn-login">Sign In/Sign Up</a>
+                        </div>
+                    {% else %}
+                        <div class="header-login same-style has-login ml-3">
+                            <a href="#" class="user-toggle">
+                                <i class="icon-user icons"></i>
+                                <span class="user-name d-none d-md-inline-block ml-1">{{user.username}}</span>
+                            </a>
+                            <ul class="my-info">
+                                <li class="user-welcome">
+                                    <p>欢迎, {{user.username}}</p>
+                                </li>
+                                <li>
+                                    <a href="/account/my_info/"><i class="ti-user mr-2"></i>My Information</a>
+                                </li>
+                                <li>
+                                    <a href="/account/my_order/"><i class="ti-package mr-2"></i>My Order</a>
+                                </li>
+                                <li>
+                                    <a href="/account/my_history/"><i class="ti-time mr-2"></i>Browsing History</a>
+                                </li>
+                                <li>
+                                    <a href="/account/my_favorite/"><i class="ti-heart mr-2"></i>My Favourite</a>
+                                </li>
+                                <li>
+                                    <a href="/account/logout/" class="logout-button"><i class="ti-power-off mr-2"></i>Log Out</a>
+                                </li>
+                            </ul>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        
+        <!-- 移动端导航 -->
+        <div class="mobile-menu-area d-block d-lg-none">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="mobile-menu">
+                            <nav id="mobile-menu-active">
+                                <ul>
+                                    <li><a href="/">Home</a></li>
+                                    <li><a href="/shopping/product_list/1/">Product</a></li>
+                                    <li><a href="/shopping/cart/">Cart</a></li>
+                                    <li><a href="/contact/">Contact Us</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<style>
+.header-area {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.horizontal-menu {
+    list-style: none;
+    padding: 0;
+}
+
+.horizontal-menu > li {
+    display: inline-block;
+    margin: 0 15px;
+    position: relative;
+}
+
+.horizontal-menu > li > a {
+    font-weight: 500;
+    padding: 10px 0;
+    display: block;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.horizontal-menu > li > a:hover {
+    color: var(--primary-color);
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+}
+
+.btn-login {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 6px 15px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.btn-login:hover {
+    background-color: var(--primary-dark);
+    color: white;
+    text-decoration: none;
+}
+
+.user-toggle {
+    display: flex;
+    align-items: center;
+}
+
+.user-name {
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.my-info {
+    width: 220px;
+    right: 0;
+    left: auto;
+}
+
+.user-welcome {
+    border-bottom: 1px solid #eee;
+    padding: 10px 20px;
+    margin-bottom: 5px;
+}
+
+.user-welcome p {
+    margin: 0;
+    font-weight: 600;
+    color: var(--primary-dark);
+}
+
+.my-info li a i {
+    color: var(--primary-color);
+}
+
+.sticky-top {
+    z-index: 1020;
+}
+
+.brand-logo {
+    transition: var(--transition);
+}
+
+.brand-logo:hover {
+    transform: scale(1.05);
+}
+
+@media (max-width: 767px) {
+    .horizontal-menu > li {
+        margin: 0 10px;
+    }
+    
+    .brand-logo h3 {
+        font-size: 18px;
+    }
+}
+</style>
